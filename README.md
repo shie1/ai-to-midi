@@ -37,7 +37,7 @@ The script uses the mido library to handle MIDI file creation and manipulation.
     TrkEnd ; end of track    
 2. Direct the script to the input file and pipe the output to a MIDI file:
     ```shell
-    cat input.txt | python ai-to-midi.py >> output.mid
+    cat input.txt | python ai-to-midi.py > output.mid
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
 
