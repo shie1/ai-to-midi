@@ -2,3 +2,4 @@ venv/
 *.example
 *.mid
 .vscode/
+build/

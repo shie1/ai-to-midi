@@ -44,7 +44,15 @@ def parse_midi_text(midi_text):
 
 
 if __name__ == "__main__":
-    midi_text = sys.stdin.read()
+    ## if piped from stdin
+    midi_text = ""
+    if not sys.stdin.isatty():
+        midi_text = sys.stdin.read()
+    ## if file is passed as argument
+    elif len(sys.argv) > 1:
+        with open(sys.argv[1], "r") as f:
+            midi_text = f.read()
+
     midi_file = parse_midi_text(midi_text)
     with tempfile.NamedTemporaryFile(delete=False) as temp_file:
         midi_file.save(temp_file.name)
