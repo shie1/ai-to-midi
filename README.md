@@ -31,9 +31,9 @@ The script uses the mido library to handle MIDI file creation and manipulation.
     T96 ; the number of ticks per beat = 96
 
     MTrk ; start new track
-    0 PrCh ch=1 p=0	; ticks=0, p=program, ch=channel
-    0 On ch=1 n=36 v=80	; ticks=0, start C3 note on channel 1, velocity 80
-    96 Off ch=1 n=36; ticks=96, end C3 note on channel 1
+    0 PrCh ch=1 p=0 ; ticks=0, p=program, ch=channel
+    0 On ch=1 n=36 v=80 ; ticks=0, start C3 note on channel 1, velocity 80
+    96 Off ch=1 n=36 ; ticks=96, end C3 note on channel 1
     TrkEnd ; end of track    
 2. Direct the script to the input file and pipe the output to a MIDI file:
     ```shell
