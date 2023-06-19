@@ -5,15 +5,12 @@ import tempfile
 
 def parse_midi_text(midi_text):
     midi_text = midi_text.split("\n")
-    midi_file = mido.MidiFile(
-        ticks_per_beat=int(midi_text[1].split()[0][1:]),
-        type=int(midi_text[0].split()[1]),
-    )
+    midi_file = mido.MidiFile()
     track = ""
 
     current_time = 0
 
-    for line in midi_text:
+    for i,line in enumerate(midi_text):
         if line.startswith(";") or line.strip() == "":
             continue
 
@@ -21,9 +18,9 @@ def parse_midi_text(midi_text):
         line = line_parts[0]  # Remove any tabs and everything after them
         tokens = line.split()
 
-        if tokens[0] == "MIDI" and len(tokens) >= 3:
+        if tokens[0] == "MIDI":
             format_type = int(tokens[1])
-            time_division = tokens[2]
+            time_division = midi_text[i+1].split()[0].split()[0][1:]
             midi_file.type = format_type
             midi_file.ticks_per_beat = int(time_division[1:])
         elif tokens[0] == "MTrk":
