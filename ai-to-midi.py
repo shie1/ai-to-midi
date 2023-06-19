@@ -9,8 +9,7 @@ def parse_midi_text(midi_text):
         ticks_per_beat=int(midi_text[1].split()[0][1:]),
         type=int(midi_text[0].split()[1]),
     )
-    track = mido.MidiTrack()
-    midi_file.tracks.append(track)
+    track = ""
 
     current_time = 0
 
@@ -33,7 +32,7 @@ def parse_midi_text(midi_text):
             current_time = 0
         elif tokens[0] == "TrkEnd":
             track.append(mido.MetaMessage("end_of_track", time=int(current_time)))
-        elif len(tokens) >= 5:
+        elif len(tokens) >= 4:
             try:
                 time = int(tokens[0])
                 current_time = time
