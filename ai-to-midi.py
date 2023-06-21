@@ -10,7 +10,7 @@ def parse_midi_text(midi_text):
 
     current_time = 0
 
-    for i,line in enumerate(midi_text):
+    for i, line in enumerate(midi_text):
         if line.startswith(";") or line.strip() == "":
             continue
 
@@ -20,7 +20,7 @@ def parse_midi_text(midi_text):
 
         if tokens[0] == "MIDI":
             format_type = int(tokens[1])
-            time_division = midi_text[i+1].split()[0].split()[0][1:]
+            time_division = midi_text[i + 1].split()[0].split()[0][1:]
             midi_file.type = format_type
             midi_file.ticks_per_beat = int(time_division[1:])
         elif tokens[0] == "MTrk":
